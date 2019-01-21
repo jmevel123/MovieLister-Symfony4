@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %} {% block body %}
+
+<h1 class="mt-4 jumbotron"><div class="container">Profile Infos</div></h1>
+<br />
+
+{%form_theme profileForm "bootstrap_4_layout.html.twig" %}
+
+{{ form_start(profileForm) }}
+
+{{ form_row(profileForm.email, {"attr" : { "placeholder" : "email"}}) }}
+{{ form_row(profileForm.username,  {"attr" : { "placeholder" : "username"}}) }}
+{{ form_row(profileForm.firstname, {"attr" : { "placeholder" : "firstname"}}) }}
+{{ form_row(profileForm.lastname, {"attr" : { "placeholder" : "lastname"}}) }}
+{{ form_row(profileForm.password, {"attr" : { "placeholder" : "password"}}) }}
+{{ form_row(profileForm.confirm_password, {"attr" : { "placeholder" : "confirm password"}}) }}
+
+<div class=" mb-4">
+    <button type="submit" class="btn btn-success">Update infos</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  |  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;            
+    <a href="{{ path("delete_user", {"id": app.user.id}) }}"  class="btn btn-danger">Delete Account</a>
+</div>
+
+{{form_end(profileForm)}} {% endblock %}

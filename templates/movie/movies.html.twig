@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %} {% block body %}
+<h1 class="mt-4 jumbotron"><div class="container">Movie List</div></h1>
+<div class="row text-center mb-4">
+  {% for movie in movies.results %}
+  <div class="card  mb-4 mt4 mx-auto" style="width: 18rem;">
+    <img
+      class="card-img-top"
+      src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/{{
+        movie.poster_path
+      }}"
+      alt="Card image cap"
+    />
+    <div class="card-body">
+      <h5 class="card-title">{{ movie.title }}</h5>
+      <p class="card-text">{{ movie.overview }}</p>
+      <a href="{{ path("display_movie", {"id": movie.id}) }}" class="btn btn-primary">See more..</a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

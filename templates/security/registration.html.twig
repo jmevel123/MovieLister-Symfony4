@@ -1,0 +1,12 @@
+{% extends "base.html.twig" %} {% block body %}
+<h1 class="mt-4">Register your account</h1>
+
+{%form_theme form "bootstrap_4_layout.html.twig" %}
+
+{{ form_start(form) }}
+{{ form_row(form.username ,{ "attr" : { "placeholder" : ""}}) }}
+{{ form_row(form.email) }} {{ form_row(form.firstname) }}
+{{ form_row(form.lastname) }} {{ form_row(form.password) }}
+{{ form_row(form.confirm_password) }}
+<button type="submit" class="btn btn-success">Register</button
+>{{ form_end(form) }} {% endblock %}

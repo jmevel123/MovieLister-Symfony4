@@ -1,0 +1,33 @@
+
+{% extends 'base.html.twig'%} 
+{% block body %}
+<h1 class="mt-4"></h1>
+<h1 class="mt-4 jumbotron"><div class="container text-center">{{ movie.title }}</div></h1>
+
+<div class="card  mb-4 mt4 mx-auto">
+    <div class="ml-4 mt-4">
+            Released the {{ movie.release_date }} &nbsp; | &nbsp; <span class="badge badge-warning">{{ movie.vote_average }}</span>
+            <div><a href="" class="btn btn-warning btn-sm">Add to favorites</a></div>
+    </div> 
+    <div class=" mb-3   mt-4 mx-auto text-center float-center">
+            <div class="card-body">
+            </div>
+            <img class=" mb-4 mt4 mx-auto" style="height: 900px; width: 600px;" src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/{{movie.poster_path}}" alt="Card image">
+            <div class="card-body">
+            <p class="card-text">{{ movie.overview }}</p>
+            </div>
+            <div class="card-body">
+            </div>
+    </div>
+</div>
+
+
+
+ {% if app.user %}
+
+ 
+
+  {% else %} <h2 class="mt-4">You must be logged in to comment </h3> <div class="mt-4 mb-4"> <a href=" {{ path("security_login")}}" class="btn btn-primary btn-lg">Login here</a> </div>{% endif %}
+</section>
+{% endblock %}
+

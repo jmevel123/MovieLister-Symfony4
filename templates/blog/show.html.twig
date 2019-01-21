@@ -1,0 +1,43 @@
+{% extends 'base.html.twig'%} {% block body %}
+<h1 class="mt-4"></h1>
+<articles>
+  <h2 class="mt-4">{{ article.title }}</h2>
+  <div class="metadata">
+    {{ article.createdAt | date("d/m/Y")}} at
+    {{ article.createdAt | date("H:i")}} in Category : {{ article.category.title }}
+  </div>
+  <img src="{{ article.image }}" alt="" />
+  <div class="content">{{ article.content | raw }}</div>
+  {% if app.user %}
+    <a href="{{ path("blog_edit", {"id" :article.id})}}" class="btn btn-primary"> Edit article</a>
+  {% endif %}
+</articles>
+<section id="comments">
+  <h3 class="mt-4">{{ article.comments | length }} Comments</h3>
+  {% for comment in article.comments %}
+
+  <div class="comment">
+    <div class="row">
+      <div class="col-3">
+        {{ comment.author }} (<small>
+          {{ comment.createdAt | date("d/m/Y at H:i")}} </small
+        >)
+      </div>
+      <div class="col">{{ comment.content | raw }}</div>
+    </div>
+    <div class="row"> <a href="{{path("delete_comment", {"id": article.id, "comment_id": comment.id})}}"  class="btn btn-danger btn-sm">Delete comment</a></div>
+  </div>
+  {% endfor %} {% if app.user %}
+
+  {{ form_start(commentForm) }} {%form_theme commentForm
+  "bootstrap_4_layout.html.twig" %} <br />
+  <h3 class="mt-4">Post a comment</h3>
+  {{ form_row(commentForm.content, {"attr": {"placeholder": "Your comment"}})}}
+
+  <button type="submit" class="btn btn-success">Post it</button>
+  {{ form_end(commentForm) }}
+  <div class="mt-4"></div>
+
+  {% else %} <h2 class="mt-4">You must be logged in to comment </h3> <div class="mt-4 mb-4"> <a href=" {{ path("security_login")}}" class="btn btn-primary btn-lg">Login here</a> </div>{% endif %}
+</section>
+{% endblock %}
