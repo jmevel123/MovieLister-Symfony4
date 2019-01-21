@@ -79,12 +79,13 @@ $context["movie"], "poster_path", array()), "html", null, true);
             // line 17
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["movie"], "title", array()), "html", null, true);
             echo "</h5>
-      <p class=\"card-text\">";
+      <p class=\"cart-text\"> ";
             // line 18
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["movie"], "overview", array()), "html", null, true);
-            echo "</p>
-      <a href=\"";
-            // line 19
+            echo twig_escape_filter($this->env, (((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, $context["movie"], "overview", array())) < 100)) ? (twig_get_attribute($this->env, $this->source, $context["movie"], "overview", array())) : ((twig_slice($this->env, twig_get_attribute($this->env, $this->source, $context["movie"], "overview", array()), 0, 99) . "..."))), "html", null, true);
+            echo " </p>
+      ";
+            // line 20
+            echo "      <a href=\"";
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("display_movie", array("id" => twig_get_attribute($this->env, $this->source, $context["movie"], "id", array()))), "html", null, true);
             echo "\" class=\"btn btn-primary\">See more..</a>
     </div>
@@ -94,7 +95,7 @@ $context["movie"], "poster_path", array()), "html", null, true);
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['movie'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 23
+        // line 24
         echo "</div>
 ";
         
@@ -117,7 +118,7 @@ $context["movie"], "poster_path", array()), "html", null, true);
 
     public function getDebugInfo()
     {
-        return array (  98 => 23,  88 => 19,  84 => 18,  80 => 17,  72 => 11,  70 => 10,  69 => 9,  63 => 6,  60 => 5,  56 => 4,  52 => 2,  15 => 1,);
+        return array (  99 => 24,  88 => 20,  84 => 18,  80 => 17,  72 => 11,  70 => 10,  69 => 9,  63 => 6,  60 => 5,  56 => 4,  52 => 2,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -139,7 +140,8 @@ $context["movie"], "poster_path", array()), "html", null, true);
     </a>
     <div class=\"card-body\">
       <h5 class=\"card-title\">{{ movie.title }}</h5>
-      <p class=\"card-text\">{{ movie.overview }}</p>
+      <p class=\"cart-text\"> {{ movie.overview | length < 100 ? movie.overview: movie.overview | slice(0,99) ~ \"...\" }} </p>
+      {# <p class=\"card-text\">{{ movie.overview | length < 100 ?: 'no' }} {{ movie.overview }} {{ movie.overview | length < 100 ?: 'yes' }} {{ movie.overview | slice(0,99) }}</p> #}
       <a href=\"{{ path(\"display_movie\", {\"id\": movie.id}) }}\" class=\"btn btn-primary\">See more..</a>
     </div>
   </div>
