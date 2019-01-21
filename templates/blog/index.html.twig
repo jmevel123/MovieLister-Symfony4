@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %} {% block title %}Hello BlogController!{% endblock
 %} {% block body %}
 <h1 class="mt-4 jumbotron jumbotron-fluid"><div class="container ml-4">Articles List</div></h1>
-<section class="articles">
+<div class="card  mb-4 mt4 mx-auto" style="width: 100%;">
+
+<section class="articles ml-4 mr-4">
   {% for article in articles %}
   <articles>
     <h2 class="mt-4">{{ article.title }}</h2>
@@ -9,7 +11,7 @@
       {{article.createdAt | date("d/m/Y") }} at
       {{ article.createdAt | date("H:i")}}
     </div>
-    <div><img src="{{article.image}}" alt="" /></div>
+    <div class="float-right "><img src="{{article.image}}" alt="" /></div>
     <div class="content">
      {{ article.content | raw }}
     </div>
@@ -19,6 +21,8 @@
       >
     </div>
   </articles>
+  <hr>
   {% endfor %}
 </section>
+</div>
 {% endblock %}

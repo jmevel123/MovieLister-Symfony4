@@ -58,27 +58,33 @@ class __TwigTemplate_cbf01c0592ea83611194ed2699b65ec4fbd79f067687581d0fa0d744c09
         foreach ($context['_seq'] as $context["_key"] => $context["movie"]) {
             // line 5
             echo "  <div class=\"card  mb-4 mt4 mx-auto\" style=\"width: 18rem;\">
+    <a href=\"";
+            // line 6
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("display_movie", array("id" => twig_get_attribute($this->env, $this->source, $context["movie"], "id", array()))), "html", null, true);
+            echo "\">
     <img
-      class=\"card-img-top\"
-      src=\"https://image.tmdb.org/t/p/w600_and_h900_bestv2/";
-            // line 8
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source,             // line 9
+    class=\"card-img-top\"
+    src=\"https://image.tmdb.org/t/p/w600_and_h900_bestv2/";
+            // line 9
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source,             // line 10
 $context["movie"], "poster_path", array()), "html", null, true);
-            // line 10
+            // line 11
             echo "\"
-      alt=\"Card image cap\"
+    alt=\"Card image cap\"
     />
+
+    </a>
     <div class=\"card-body\">
       <h5 class=\"card-title\">";
-            // line 14
+            // line 17
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["movie"], "title", array()), "html", null, true);
             echo "</h5>
       <p class=\"card-text\">";
-            // line 15
+            // line 18
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["movie"], "overview", array()), "html", null, true);
             echo "</p>
       <a href=\"";
-            // line 16
+            // line 19
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("display_movie", array("id" => twig_get_attribute($this->env, $this->source, $context["movie"], "id", array()))), "html", null, true);
             echo "\" class=\"btn btn-primary\">See more..</a>
     </div>
@@ -88,7 +94,7 @@ $context["movie"], "poster_path", array()), "html", null, true);
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['movie'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 20
+        // line 23
         echo "</div>
 ";
         
@@ -111,7 +117,7 @@ $context["movie"], "poster_path", array()), "html", null, true);
 
     public function getDebugInfo()
     {
-        return array (  92 => 20,  82 => 16,  78 => 15,  74 => 14,  68 => 10,  66 => 9,  65 => 8,  60 => 5,  56 => 4,  52 => 2,  15 => 1,);
+        return array (  98 => 23,  88 => 19,  84 => 18,  80 => 17,  72 => 11,  70 => 10,  69 => 9,  63 => 6,  60 => 5,  56 => 4,  52 => 2,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -121,13 +127,16 @@ $context["movie"], "poster_path", array()), "html", null, true);
 <div class=\"row text-center mb-4\">
   {% for movie in movies.results %}
   <div class=\"card  mb-4 mt4 mx-auto\" style=\"width: 18rem;\">
+    <a href=\"{{ path(\"display_movie\", {\"id\": movie.id}) }}\">
     <img
-      class=\"card-img-top\"
-      src=\"https://image.tmdb.org/t/p/w600_and_h900_bestv2/{{
-        movie.poster_path
-      }}\"
-      alt=\"Card image cap\"
+    class=\"card-img-top\"
+    src=\"https://image.tmdb.org/t/p/w600_and_h900_bestv2/{{
+      movie.poster_path
+    }}\"
+    alt=\"Card image cap\"
     />
+
+    </a>
     <div class=\"card-body\">
       <h5 class=\"card-title\">{{ movie.title }}</h5>
       <p class=\"card-text\">{{ movie.overview }}</p>

@@ -69,54 +69,58 @@ class __TwigTemplate_e23846cc464457fbdd44329d3e3643c5b3a8111d4a558c1406bc6f2b6ba
 
         // line 3
         echo "<h1 class=\"mt-4 jumbotron jumbotron-fluid\"><div class=\"container ml-4\">Articles List</div></h1>
-<section class=\"articles\">
+<div class=\"card  mb-4 mt4 mx-auto\" style=\"width: 100%;\">
+
+<section class=\"articles ml-4 mr-4\">
   ";
-        // line 5
+        // line 7
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["articles"]) || array_key_exists("articles", $context) ? $context["articles"] : (function () { throw new Twig_Error_Runtime('Variable "articles" does not exist.', 5, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["articles"]) || array_key_exists("articles", $context) ? $context["articles"] : (function () { throw new Twig_Error_Runtime('Variable "articles" does not exist.', 7, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["article"]) {
-            // line 6
+            // line 8
             echo "  <articles>
     <h2 class=\"mt-4\">";
-            // line 7
+            // line 9
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["article"], "title", array()), "html", null, true);
             echo "</h2>
     <div class=\"metadata\">
       ";
-            // line 9
+            // line 11
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["article"], "createdAt", array()), "d/m/Y"), "html", null, true);
             echo " at
       ";
-            // line 10
+            // line 12
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["article"], "createdAt", array()), "H:i"), "html", null, true);
             echo "
     </div>
-    <div><img src=\"";
-            // line 12
+    <div class=\"float-right \"><img src=\"";
+            // line 14
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["article"], "image", array()), "html", null, true);
             echo "\" alt=\"\" /></div>
     <div class=\"content\">
      ";
-            // line 14
+            // line 16
             echo twig_get_attribute($this->env, $this->source, $context["article"], "content", array());
             echo "
     </div>
     <div class=\"mt-3\">
       <a href=\"";
-            // line 17
+            // line 19
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("blog_show", array("id" => twig_get_attribute($this->env, $this->source, $context["article"], "id", array()))), "html", null, true);
             echo "\" class=\"btn btn-primary\"
         >lire la suite</a
       >
     </div>
   </articles>
+  <hr>
   ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['article'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 23
+        // line 26
         echo "</section>
+</div>
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -138,7 +142,7 @@ class __TwigTemplate_e23846cc464457fbdd44329d3e3643c5b3a8111d4a558c1406bc6f2b6ba
 
     public function getDebugInfo()
     {
-        return array (  119 => 23,  107 => 17,  101 => 14,  96 => 12,  91 => 10,  87 => 9,  82 => 7,  79 => 6,  75 => 5,  71 => 3,  62 => 2,  15 => 1,);
+        return array (  122 => 26,  109 => 19,  103 => 16,  98 => 14,  93 => 12,  89 => 11,  84 => 9,  81 => 8,  77 => 7,  71 => 3,  62 => 2,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -146,7 +150,9 @@ class __TwigTemplate_e23846cc464457fbdd44329d3e3643c5b3a8111d4a558c1406bc6f2b6ba
         return new Twig_Source("{% extends 'base.html.twig' %} {% block title %}Hello BlogController!{% endblock
 %} {% block body %}
 <h1 class=\"mt-4 jumbotron jumbotron-fluid\"><div class=\"container ml-4\">Articles List</div></h1>
-<section class=\"articles\">
+<div class=\"card  mb-4 mt4 mx-auto\" style=\"width: 100%;\">
+
+<section class=\"articles ml-4 mr-4\">
   {% for article in articles %}
   <articles>
     <h2 class=\"mt-4\">{{ article.title }}</h2>
@@ -154,7 +160,7 @@ class __TwigTemplate_e23846cc464457fbdd44329d3e3643c5b3a8111d4a558c1406bc6f2b6ba
       {{article.createdAt | date(\"d/m/Y\") }} at
       {{ article.createdAt | date(\"H:i\")}}
     </div>
-    <div><img src=\"{{article.image}}\" alt=\"\" /></div>
+    <div class=\"float-right \"><img src=\"{{article.image}}\" alt=\"\" /></div>
     <div class=\"content\">
      {{ article.content | raw }}
     </div>
@@ -164,8 +170,10 @@ class __TwigTemplate_e23846cc464457fbdd44329d3e3643c5b3a8111d4a558c1406bc6f2b6ba
       >
     </div>
   </articles>
+  <hr>
   {% endfor %}
 </section>
+</div>
 {% endblock %}
 ", "blog/index.html.twig", "/home/jeremy/rendu/Symfony4/MyMovieList/templates/blog/index.html.twig");
     }

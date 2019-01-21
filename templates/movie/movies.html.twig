@@ -3,13 +3,16 @@
 <div class="row text-center mb-4">
   {% for movie in movies.results %}
   <div class="card  mb-4 mt4 mx-auto" style="width: 18rem;">
+    <a href="{{ path("display_movie", {"id": movie.id}) }}">
     <img
-      class="card-img-top"
-      src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/{{
-        movie.poster_path
-      }}"
-      alt="Card image cap"
+    class="card-img-top"
+    src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/{{
+      movie.poster_path
+    }}"
+    alt="Card image cap"
     />
+
+    </a>
     <div class="card-body">
       <h5 class="card-title">{{ movie.title }}</h5>
       <p class="card-text">{{ movie.overview }}</p>
